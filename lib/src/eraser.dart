@@ -32,6 +32,8 @@ class Eraser with Pen {
 
   @override
   onPointerDown(PointerDownEvent event) {
+    drawing.points.clear();
+    drawing.path.reset();
     drawing.points.add(event.localPosition);
     drawing.path.moveTo(event.localPosition.dx, event.localPosition.dy);
     painter = _Painter();
