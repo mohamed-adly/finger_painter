@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       ..setMinStrokeWidth(3)
       ..setMaxStrokeWidth(15)
       ..setBlurSigma(0.0)
-      ..setPenType(PenType.paintbrush2)
+      ..setPenType(PenType.pencil)
       ..setBlendMode(ui.BlendMode.srcOver);
   }
 
@@ -38,25 +38,31 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(
+        body: Stack(
           children: [
-            const SizedBox(height: 30),
-            Painter(
-              controller: painterController,
-              backgroundColor: const Color(0xFFF0F0F0),
-              onDrawingEnded: (bytes) async {
-                setState(() {});
-              },
-              size: const Size(double.infinity, 250),
-              // child: Image.asset('assets/map.png', fit: BoxFit.cover),
-            ),
-            const SizedBox(height: 30),
-            Expanded(
-              child: SingleChildScrollView(
-                  child: Controls(
-                pc: painterController,
-                imgBytesList: painterController.getImageBytes(),
-              )),
+            Image.network(
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"),
+            Column(
+              children: [
+                const SizedBox(height: 30),
+                Painter(
+                  controller: painterController,
+
+                  onDrawingEnded: (bytes) async {
+                    setState(() {});
+                  },
+                  size: const Size(double.infinity, 250),
+                  // child: Image.asset('assets/map.png', fit: BoxFit.cover),
+                ),
+                const SizedBox(height: 30),
+                Expanded(
+                  child: SingleChildScrollView(
+                      child: Controls(
+                    pc: painterController,
+                    imgBytesList: painterController.getImageBytes(),
+                  )),
+                ),
+              ],
             ),
           ],
         ),
