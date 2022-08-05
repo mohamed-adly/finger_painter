@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:finger_painter/src/eraser.dart';
 import 'package:finger_painter/src/pencil.dart';
 import 'package:flutter/material.dart';
 
@@ -156,6 +157,9 @@ class _PainterState extends State<Painter> {
         break;
       case PenType.pencil:
         pen = Pencil();
+        break;
+      case PenType.eraser:
+        pen = Eraser();
         break;
       default:
         pen = Pencil();

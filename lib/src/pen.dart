@@ -20,6 +20,7 @@ enum PenType {
   pencil,
   paintbrush,
   paintbrush2,
+  eraser,
 }
 
 /// class to store drawing parameters while painting and then
